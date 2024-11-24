@@ -51,7 +51,7 @@ func main() {
 		syscall.SIGABRT,
 	)
 	go func(ctx context.Context) {
-		tk := time.NewTicker(time.Millisecond * 10000)
+		tk := time.NewTicker(time.Millisecond * 7500)
 		for {
 			select {
 			case <-ctx.Done():
@@ -80,15 +80,21 @@ func main() {
 				switch stat {
 				case "A", "P":
 					if !alarm {
-						go sirenaplay.SirenaPlay(*trevoga)
-						fmt.Println("Trevoga")
+						log.Println("Trevoga")
 						alarm = true
+						err := sirenaplay.SirenaPlay(*trevoga)
+						if err != nil {
+							log.Println(err)
+						}
 					}
 				case "N":
 					if alarm {
-						go sirenaplay.SirenaPlay(*vidbiy)
-						fmt.Println("Otboy")
+						log.Println("Otboy")
 						alarm = false
+						err := sirenaplay.SirenaPlay(*vidbiy)
+						if err != nil {
+							log.Println(err)
+						}
 					}
 				default:
 					log.Println("unknow answer", stat)
