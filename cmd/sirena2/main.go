@@ -25,7 +25,10 @@ func main() {
 	test := flag.String("test", "", "Test audio file")
 	flag.Parse()
 	if *test != "" {
-		sirenaplay.SirenaPlay(*test)
+		err := sirenaplay.SirenaPlay(*test)
+		if err != nil {
+			log.Println(err)
+		}
 		return
 	}
 	if *key == "" {
