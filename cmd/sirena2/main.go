@@ -34,15 +34,15 @@ func main() {
 	if *key == "" {
 		log.Fatalln("No API key")
 	}
-	addr, err := net.ResolveTCPAddr("tcp", "tcp.alerts.com.ua:1024")
-	if err != nil {
-		log.Fatalln(err)
-	}
-	conn, err := net.DialTCP("tcp", nil, addr)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	defer conn.Close()
+	//addr, err := net.ResolveTCPAddr("tcp", "api.alerts.in.ua:443")
+	//if err != nil {
+	//	log.Fatalln(err)
+	//}
+	//conn, err := net.DialTCP("tcp", nil, addr)
+	//if err != nil {
+	//	log.Fatalln(err)
+	//}
+	//defer conn.Close()
 	ctx, cancel := context.WithCancel(context.Background())
 	signal_chan := make(chan os.Signal, 1)
 	signal.Notify(
