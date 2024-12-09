@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"io"
 	"log"
-	"net"
 	"net/http"
 	"os"
 	"os/signal"
@@ -34,15 +33,14 @@ func main() {
 	if *key == "" {
 		log.Fatalln("No API key")
 	}
-	//addr, err := net.ResolveTCPAddr("tcp", "api.alerts.in.ua:443")
-	//if err != nil {
-	//	log.Fatalln(err)
-	//}
-	//conn, err := net.DialTCP("tcp", nil, addr)
-	//if err != nil {
-	//	log.Fatalln(err)
-	//}
-	//defer conn.Close()
+	_, err := os.Stat(*trevoga)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	_, err = os.Stat(*vidbiy)
+	if err != nil {
+		log.Fatalln(err)
+	}
 	ctx, cancel := context.WithCancel(context.Background())
 	signal_chan := make(chan os.Signal, 1)
 	signal.Notify(
