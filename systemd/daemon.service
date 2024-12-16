@@ -7,7 +7,7 @@ Restart=always
 RestartSec=3
 
 WorkingDirectory=/home/user/sirena2
-ExecStart=/home/user/sirena2/daemon -key 1ed519170d34e99df23d39363fe53144a86bb6f9ab2203 -trevoga trevoga.mp3 -vidbiy vidbiy.mp3
+ExecStart=/home/user/sirena2/daemon -key 123 -trevoga trevoga.mp3 -vidbiy vidbiy.mp3
 
 [Install]
 WantedBy=default.target
